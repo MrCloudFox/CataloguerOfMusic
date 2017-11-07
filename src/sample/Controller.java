@@ -83,22 +83,7 @@ public class Controller {
 
             if(fil.getName().contains("-") && !catocolisedFiles.contains(fil.getName())) {
                 sourceFile = FileSystems.getDefault().getPath(MyPath + "/" + fil.getName());
-                if (!fil.getName().split("-")[0].substring(fil.getName().split("-")[0].length() - 1, fil.getName().split("-")[0].length()).equals(" ")) {
-                    patternOfMusicName = fil.getName().split("-")[0];
-                } else if (fil.getName().split(" ")[1].equals("-")) {
-                    patternOfMusicName = fil.getName().split("-")[0].replace(" ", "");
-                } else {
-                    patternOfMusicName = fil.getName().split("-")[0].substring(0, fil.getName().split("-")[0].length() - 1);
-                    boolean spaces = true;
-                    int countOfSpaces = 1;
-                    while (spaces) {
-                        if (patternOfMusicName.substring(patternOfMusicName.length() - 1, patternOfMusicName.length()).equals(" ")) {
-                            patternOfMusicName = fil.getName().split("-")[0].substring(0, fil.getName().split("-")[0].length() - countOfSpaces);
-                            countOfSpaces++;
-                        } else spaces = false;
-                    }
-
-                }
+                    patternOfMusicName = fil.getName().split("-")[0].trim();
 
                 if (!existingFolders.contains(patternOfMusicName)) {
                     existingFolders.add(patternOfMusicName);
